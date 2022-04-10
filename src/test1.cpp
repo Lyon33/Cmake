@@ -53,7 +53,7 @@ Stock::Stock(const std::string str, int s, int p, int tol)
 
 int main()
 {
-    //这个上用的比较多的调用构造函数初始化类，该方法生成的对象没有名称，但是可以用指针
+    //这个是用的比较多的调用构造函数初始化类，该方法生成的对象没有名称，但是可以用指针
     //来管理对象！！💰💰💰💰💰💰💰💰       
     Stock* pStock = new Stock("Apple", 200, 50.78, 200*50.78);
 
