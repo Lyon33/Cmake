@@ -11,7 +11,6 @@ int main()
     std::cout << "Hello world" << std::endl;
     std::cout << "Tmux 的具体使用.\n";
 
-
     return 0;
 }
 
