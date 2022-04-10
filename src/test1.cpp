@@ -15,10 +15,10 @@
 class Stock
 {
 private:
-    std::string     company;      //公司名称
-    uint32_t  shares;       //股票数量
-    uint16_t  share_value;  //每股价格
-    uint32_t  total_value;  //总价格
+    std::string     m_company;      //公司名称
+    uint32_t  m_shares;       //股票数量
+    uint16_t  m_share_value;  //每股价格
+    uint32_t  m_total_value;  //总价格
 
 public:
     uint32_t SetTol();
@@ -29,8 +29,8 @@ public:
 
 uint32_t Stock::SetTol()
 {
-    total_value = shares * total_value;
-    return total_value;
+    m_total_value = m_shares *m_total_value;
+    return m_total_value;
 }
 
 Stock::Stock()
@@ -44,16 +44,20 @@ Stock::~Stock()
 }
 
 Stock::Stock(const std::string str, int s, int p, int tol)
-    :company(str), shares(s), share_value(p), total_value(tol)
+    :m_company(str), m_shares(s), m_share_value(p), m_total_value(tol)
 {
-    std::cout << "这支股票的基本信息：" << "\n" << "价格：" << share_value 
-        << "\n数量：" << shares << "\n公司名称：" << company << "\n总价: " 
-        << total_value << "\n";
+    std::cout << "这支股票的基本信息：" << "\n" << "价格：" << m_share_value 
+        << "\n数量：" << m_shares << "\n公司名称：" << m_company << "\n总价: " 
+        << m_total_value << "\n";
 }
 
 int main()
 {
-    Stock stock_1("Mexican", 100, 25, 2500);
+    //这个上用的比较多的调用构造函数初始化类，该方法生成的对象没有名称，但是可以用指针
+    //来管理对象！！💰💰💰💰💰💰💰💰       
+    Stock* pStock = new Stock("Apple", 200, 50.78, 200*50.78);
+
+    Stock stock_1("Mexican", 100, 25, 2500);//调用的是用户定义的构造函数
     Stock p;    //将调用默认构造函数
     return 0;
 }
