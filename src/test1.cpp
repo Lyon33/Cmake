@@ -55,7 +55,7 @@ int main()
 {
     //这个是用的比较多的调用构造函数初始化类，该方法生成的对象没有名称，但是可以用指针
     //来管理对象！！💰💰💰💰💰💰💰💰       
-    Stock* pStock = new Stock("Apple", 200, 50.78, 200*50.78);
+    Stock* pStock = new Stock("Apple", 200, (int)50.78, (int)200*50.78);
 
     Stock stock_1("Mexican", 100, 25, 2500);//调用的是用户定义的构造函数
     Stock p;    //将调用默认构造函数

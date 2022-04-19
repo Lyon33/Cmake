@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.1.2)
 project(CmakeTest VERSION 0.0.1)
 
+set(CMAKE_CXX_COMPILER=llvm-g++)
+
 set(CMAKE_CXX_STANDARD 17)      #C++ 17标准
 
 #在当前目录下的bin文件夹下生成可执行文件。
