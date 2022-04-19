@@ -1,0 +1,81 @@
+//第一次安装llvm，下面是部分log。
+➜  ~ brew install llvm   
+==> Downloading https://mirrors.ustc.edu.cn/homebrew-bottles/bottles/llvm-13.0.1_1.arm64_monterey.bottle.tar.gz
+#######################################################################   99.9%curl: (56) LibreSSL SSL_read: Connection reset by peer, errno 54
+
+Warning: Bottle missing, falling back to the default domain...
+==> Downloading https://ghcr.io/v2/homebrew/core/llvm/manifests/13.0.1_1
+######################################################################## 100.0%
+==> Downloading https://ghcr.io/v2/homebrew/core/llvm/blobs/sha256:8242e90a3ee6b20d7fd782e7da2bda892ee8b877a6a0e9cf7d4ca62c693cc9cb
+==> Downloading from https://pkg-containers.githubusercontent.com/ghcr1/blobs/sha256:8242e90a3ee6b20d7fd782e7da2bda892ee8b877a6a0e9cf7d4ca62c693cc9cb?se=2022-
+######################################################################## 100.0%
+==> Pouring llvm--13.0.1_1.arm64_monterey.bottle.tar.gz
+==> Caveats
+To use the bundled libc++ please add the following LDFLAGS:
+  LDFLAGS="-L/opt/homebrew/opt/llvm/lib -Wl,-rpath,/opt/homebrew/opt/llvm/lib"
+
+llvm is keg-only, which means it was not symlinked into /opt/homebrew,
+because macOS already provides this software and installing another version in
+parallel can cause all kinds of trouble.
+
+If you need to have llvm first in your PATH, run:
+  echo 'export PATH="/opt/homebrew/opt/llvm/bin:$PATH"' >> ~/.zshrc
+
+For compilers to find llvm you may need to set:
+  export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
+  export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
+
+==> Summary
+🍺  /opt/homebrew/Cellar/llvm/13.0.1_1: 5,449 files, 909.2MB
+==> Running `brew cleanup llvm`...
+Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.
+Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
+➜  ~ 
+➜  ~ 
+➜  ~ echo 'export PATH="/opt/homebrew/opt/llvm/bin:$PATH"' >> ~/.zshrc 
+➜  ~ vi ~/.zshrc 
+➜  ~ llvm
+zsh: command not found: llvm
+➜  ~ df -lh
+Filesystem       Size   Used  Avail Capacity iused      ifree %iused  Mounted on
+/dev/disk3s1s1  228Gi   23Gi  179Gi    12%  577694 1872049720    0%   /
+/dev/disk3s6    228Gi   20Ki  179Gi     1%       0 1872049720    0%   /System/Volumes/VM
+/dev/disk3s2    228Gi  422Mi  179Gi     1%     307 1872049720    0%   /System/Volumes/Preboot
+/dev/disk3s4    228Gi  602Mi  179Gi     1%     196 1872049720    0%   /System/Volumes/Update
+/dev/disk1s2    500Mi  6.0Mi  482Mi     2%       1    4930880    0%   /System/Volumes/xarts
+/dev/disk1s1    500Mi  7.3Mi  482Mi     2%      21    4930880    0%   /System/Volumes/iSCPreboot
+/dev/disk1s3    500Mi  456Ki  482Mi     1%      48    4930880    0%   /System/Volumes/Hardware
+/dev/disk3s5    228Gi   24Gi  179Gi    12%  479633 1872049720    0%   /System/Volumes/Data
+/dev/disk3s1    228Gi   23Gi  179Gi    12%  500639 1872049720    0%   /System/Volumes/Update/mnt1
+/dev/disk5s1     39Mi   26Mi   12Mi    68%     120     126720    0%   /Volumes/LANDrop
+
+//llvm/clang 的简单使用
+编译生成可执行文件：
+clang test.c -o test
+
+运行可执行文件：
+test
+
+生成llvm字节码文件：
+clang -O1 -emit-llvm test.c -c -o test.bc
+
+生成LLVM 的汇编代码 .ll 文件(可视化字节码文件)
+clang -O1 -emit-llvm test.c -S -o test.ll
+
+运行字节码文件：
+lli test.bc
+结果: "hello world"
+.ll文件也可以用lli来执行
+
+将 .bc 文件转化为 .ll 文件:
+llvm-dis test.bc
+
+将 .ll 文件转化为 .bc 文件:
+llvm-as test.ll
+
+编译字节码文件为汇编文件：
+llc test.bc -o test.s
+
+将 .bc 或 .ll 文件转化为本机平台的汇编代码：
+llc test.bc
+llc test.ll
