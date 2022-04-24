@@ -17,7 +17,7 @@
     2:进入~/.ycm_extra_conf.py，在flags 里添加brew安装库目录：
         '-isystem', '/opt/homebrew/Cellar/xxx/include',
         (注意：xxx是你要添加的库)
-
+        (详情参考：https://www.hanleylee.com/header-file-use.html)
 🍺🍺
 🍺🍺
 🍺🍺
