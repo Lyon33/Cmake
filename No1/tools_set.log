@@ -1,0 +1,31 @@
+🍺🍺 YCM 添加第三方库路径自动补全
+    ycm 所依赖的补全依赖的头文件路径有:
+
+    系统的 C_INCLUDE_PATH / CPLUS_INCLUDE_PATH
+
+    ~/.vimrc 中定义的 set path=***
+
+    ycm 中定义的 .ycm_extra_conf 文件
+
+    ycm 的 .ycm_extra_conf.py 我通常定义在 .vimrc 中, 作为一个固定配置
+
+    1:进入到～/.vimrc里，添加:
+        let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+
+        :source ~/.vimrc    //更新一下
+
+    2:进入~/.ycm_extra_conf.py，在flags 里添加brew安装库目录：
+        '-isystem', '/opt/homebrew/Cellar/xxx/include',
+        (注意：xxx是你要添加的库)
+
+🍺🍺
+🍺🍺
+🍺🍺
+🍺🍺
+🍺🍺
+🍺🍺
+🍺🍺
+🍺🍺
+🍺🍺
+🍺🍺
+🍺🍺
