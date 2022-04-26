@@ -1,0 +1,35 @@
+/*************************************************************************
+* File Name: Game.h
+* Author: Lyon
+* Mail: 786208769@qq.com
+* Created Time: 二  4/26 01:11:04 2022
+*************************************************************************/
+#ifndef GAME_H
+#define GAME_H
+#include "SDL2/SDL.h"
+#include <iostream>
+
+class Game
+{
+public:
+    Game();
+    ~Game();
+
+    //初始化
+    void init(const char* title, int xpos, int ypos, int width, int height, bool fullscream);
+
+    void handleEvent();
+    void update();
+    void render();
+    void clean();
+
+    bool running(){ return isRunning; }
+
+private:
+    int cnt;
+    bool isRunning;
+    SDL_Window* window;
+    SDL_Renderer* renderer;
+};
+
+#endif

@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libMygamelib.a CMakeFiles/Mygamelib.dir/a.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libMygamelib.a

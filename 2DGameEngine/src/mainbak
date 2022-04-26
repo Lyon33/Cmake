@@ -1,0 +1,30 @@
+/*************************************************************************
+* File Name: main.cpp
+* Author: Lyon
+* Mail: 786208769@qq.com
+* Created Time: 二  4/26 17:03:12 2022
+*************************************************************************/
+#include "Game.h"
+
+//实例一个新的Game对象指针，并先设置为空
+Game *game = nullptr;
+
+int main()
+{
+    game = new Game();
+
+    game->init("2D Game loop", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 
+               800, 600, false);
+
+    while(game->running())
+    /* while(1) */
+    {
+        game->handleEvent();
+        game->update();
+        game->render();
+    }
+
+    game->clean();
+    return 0;
+}
+
