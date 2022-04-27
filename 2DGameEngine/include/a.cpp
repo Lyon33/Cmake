@@ -6,6 +6,11 @@
 *************************************************************************/
 #include "a.h"
 
+//创建一个 playerTex 贴图.
+SDL_Texture* playerTex;
+
+SDL_Rect srcR, desR;
+
 void a::init(const char* title, int xpos, int ypos, int weight, int heigh, bool fullscream)
 {
     int flags = 0;
@@ -37,6 +42,12 @@ void a::init(const char* title, int xpos, int ypos, int weight, int heigh, bool 
         isRunning = false;
         std::cerr << "System Initoned Failed!\n";
     }
+
+    //添加马里奥图片到贴纸
+    SDL_Surface* tmpSurface = IMG_Load("../assets/mario.png");
+    playerTex = SDL_CreateTextureFromSurface(Render, tmpSurface);
+
+    SDL_FreeSurface(tmpSurface);    //清空临时表面
 }
 
 bool a::running()
@@ -78,14 +89,18 @@ void a::handleEvent()
 
 void a::render()
 {
-    SDL_RenderClear(Render); 
+    SDL_RenderClear(Render);
+    SDL_RenderCopy(Render, playerTex, NULL, &desR);
     SDL_RenderPresent(Render);
 }
 
 void a::update()
 {
+    desR.h = 32;
+    desR.w = 30;
+    desR.y = count;
     std::cout << count++ << std::endl;
-    SDL_Delay(100);
+    SDL_Delay(15);
 }
 
 void a::clean()

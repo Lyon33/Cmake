@@ -16,7 +16,8 @@
 * Created Time: 二  4/26 22:35:02 2022
 *************************************************************************/
 #pragma once
-#include "SDL2/SDL.h"
+#include "SDL2/SDL_image.h"
+/* "SDL2_image.h" 包含了SDL2库下的SDL.h */
 #include <iostream>
 
 class a
