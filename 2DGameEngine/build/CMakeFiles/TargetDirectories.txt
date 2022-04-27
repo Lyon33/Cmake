@@ -1,6 +1,0 @@
-/Users/lyon_z/workspace/test/2DGameEngine/build/CMakeFiles/sdl2_game.dir
-/Users/lyon_z/workspace/test/2DGameEngine/build/CMakeFiles/edit_cache.dir
-/Users/lyon_z/workspace/test/2DGameEngine/build/CMakeFiles/rebuild_cache.dir
-/Users/lyon_z/workspace/test/2DGameEngine/build/include/CMakeFiles/Mygamelib.dir
-/Users/lyon_z/workspace/test/2DGameEngine/build/include/CMakeFiles/edit_cache.dir
-/Users/lyon_z/workspace/test/2DGameEngine/build/include/CMakeFiles/rebuild_cache.dir
