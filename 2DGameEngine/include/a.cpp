@@ -100,7 +100,8 @@ void a::update()
     desR.w = 30;
     desR.y = count;
     std::cout << count++ << std::endl;
-    SDL_Delay(15);
+
+    /* SDL_Delay(15); */
 }
 
 void a::clean()
