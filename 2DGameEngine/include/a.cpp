@@ -5,6 +5,7 @@
 * Created Time: 二  4/26 22:40:56 2022
 *************************************************************************/
 #include "a.h"
+#include "TextureManager.h"
 
 //创建一个 playerTex 贴图.
 SDL_Texture* playerTex;
@@ -43,11 +44,7 @@ void a::init(const char* title, int xpos, int ypos, int weight, int heigh, bool 
         std::cerr << "System Initoned Failed!\n";
     }
 
-    //添加马里奥图片到贴纸
-    SDL_Surface* tmpSurface = IMG_Load("../assets/mario.png");
-    playerTex = SDL_CreateTextureFromSurface(Render, tmpSurface);
-
-    SDL_FreeSurface(tmpSurface);    //清空临时表面
+    playerTex = TextureManager::LoadTexture("../assets/mario.png", Render);
 }
 
 bool a::running()
@@ -100,7 +97,6 @@ void a::update()
     desR.w = 30;
     desR.y = count;
     std::cout << count++ << std::endl;
-
     /* SDL_Delay(15); */
 }
 
