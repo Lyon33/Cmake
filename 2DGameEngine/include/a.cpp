@@ -8,11 +8,6 @@
 #include "TextureManager.h"
 #include "GameObject.h"
 
-/* //创建一个 playerTex 贴图. */
-/* SDL_Texture* playerTex; */
-
-/* SDL_Rect srcR, desR; */
-
 //GameObject player*
 GameObject* player;
 GameObject* enemy;
