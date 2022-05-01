@@ -15,3 +15,8 @@ SDL_Texture* TextureManager::LoadTexture(const char* texture)
     return tex;
 }
 
+void TextureManager::Drwa(SDL_Texture* tex, SDL_Rect src, SDL_Rect dest)
+{
+    SDL_RenderCopy(a::Render, tex, &src, &dest);
+}
+

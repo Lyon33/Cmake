@@ -35,7 +35,7 @@ void GameObject::Update()
 void GameObject::Render()
 {
     SDL_RenderCopy(a::Render, objTexture, NULL, &desR);
-    /* SDL_RenderCopy(renderer, objTexture, &srcR, &desR); */
+    /* SDL_RenderCopy(a::Render, objTexture, &srcR, &desR); */
     //不知道为什么，跟着视频，第三个参数写 &srcR时，不能正确显示图片
 }
 
