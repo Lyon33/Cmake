@@ -44,12 +44,13 @@ public:
 
     //清理销毁窗口，内存等。
     void clean();
+    
+   static SDL_Renderer* Render;
 
 private:
     int count;  //计数用的，与update（）配合，方便查看程序运行情况。
     bool isRunning; //while循环的判断条件。
     SDL_Window* Window;
-    SDL_Renderer* Render;
 };
 
 #endif

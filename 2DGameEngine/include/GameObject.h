@@ -11,7 +11,7 @@
 class GameObject
 {
 public:
-    GameObject(const char* texturesheet, SDL_Renderer* ren, int x, int y);
+    GameObject(const char* texturesheet, int x, int y);
     ~GameObject();
 
     //封装函数
@@ -25,7 +25,6 @@ private:
     int ypos;
     
     SDL_Texture* objTexture;    //Player's Texture
-    SDL_Renderer* renderer;     //Player's render
 
     SDL_Rect srcR, desR;         //Rect;
 };

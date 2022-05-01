@@ -8,6 +8,8 @@
 #include "TextureManager.h"
 #include "GameObject.h"
 
+SDL_Renderer* a::Render = nullptr;
+
 //GameObject player*
 GameObject* player;
 GameObject* enemy;
@@ -45,9 +47,9 @@ void a::init(const char* title, int xpos, int ypos, int weight, int heigh, bool 
     }
 
     /* playerTex = TextureManager::LoadTexture("../assets/mario.png", Render); */
-    player = new GameObject("../assets/mario.png", Render, 0, 0);
+    player = new GameObject("../assets/mario.png", 0, 0);
 
-    enemy = new GameObject("../assets/spider.png", Render, 50, 100);
+    enemy = new GameObject("../assets/spider.png", 50, 100);
 }
 
 bool a::running()

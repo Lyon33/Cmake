@@ -12,7 +12,7 @@ class TextureManager
 {
 public:
     //注意这里加了static静态修饰
-    static SDL_Texture* LoadTexture(const char* fileName, SDL_Renderer* ren);
+    static SDL_Texture* LoadTexture(const char* fileName);
 
 private:
 

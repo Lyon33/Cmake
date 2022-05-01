@@ -7,10 +7,9 @@
 #include "GameObject.h"
 #include "TextureManager.h"
 
-GameObject::GameObject(const char* texturesheet, SDL_Renderer* ren, int x, int y)
+GameObject::GameObject(const char* texturesheet, int x, int y)
 {
-    renderer = ren; 
-    objTexture = TextureManager::LoadTexture(texturesheet, renderer);
+    objTexture = TextureManager::LoadTexture(texturesheet);
 
     xpos = x;
     ypos = y;
@@ -35,7 +34,7 @@ void GameObject::Update()
 
 void GameObject::Render()
 {
-    SDL_RenderCopy(renderer, objTexture, NULL, &desR);
+    SDL_RenderCopy(a::Render, objTexture, NULL, &desR);
     /* SDL_RenderCopy(renderer, objTexture, &srcR, &desR); */
     //不知道为什么，跟着视频，第三个参数写 &srcR时，不能正确显示图片
 }
