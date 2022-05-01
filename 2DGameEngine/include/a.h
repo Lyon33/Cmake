@@ -15,7 +15,8 @@
 * Mail: 786208769@qq.com
 * Created Time: 二  4/26 22:35:02 2022
 *************************************************************************/
-#pragma once
+#ifndef A_H
+#define A_H
 #include "SDL2/SDL_image.h"
 /* "SDL2_image.h" 包含了SDL2库下的SDL.h */
 #include <iostream>
@@ -51,3 +52,4 @@ private:
     SDL_Renderer* Render;
 };
 
+#endif

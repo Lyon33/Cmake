@@ -6,11 +6,16 @@
 *************************************************************************/
 #include "a.h"
 #include "TextureManager.h"
+#include "GameObject.h"
 
-//创建一个 playerTex 贴图.
-SDL_Texture* playerTex;
+/* //创建一个 playerTex 贴图. */
+/* SDL_Texture* playerTex; */
 
-SDL_Rect srcR, desR;
+/* SDL_Rect srcR, desR; */
+
+//GameObject player*
+GameObject* player;
+GameObject* enemy;
 
 void a::init(const char* title, int xpos, int ypos, int weight, int heigh, bool fullscream)
 {
@@ -44,7 +49,10 @@ void a::init(const char* title, int xpos, int ypos, int weight, int heigh, bool 
         std::cerr << "System Initoned Failed!\n";
     }
 
-    playerTex = TextureManager::LoadTexture("../assets/mario.png", Render);
+    /* playerTex = TextureManager::LoadTexture("../assets/mario.png", Render); */
+    player = new GameObject("../assets/mario.png", Render, 0, 0);
+
+    enemy = new GameObject("../assets/spider.png", Render, 50, 100);
 }
 
 bool a::running()
@@ -87,17 +95,15 @@ void a::handleEvent()
 void a::render()
 {
     SDL_RenderClear(Render);
-    SDL_RenderCopy(Render, playerTex, NULL, &desR);
+    player->Render();
+    enemy->Render();
     SDL_RenderPresent(Render);
 }
 
 void a::update()
 {
-    desR.h = 32;
-    desR.w = 30;
-    desR.y = count;
-    std::cout << count++ << std::endl;
-    /* SDL_Delay(15); */
+    player->Update();
+    enemy->Update();
 }
 
 void a::clean()
