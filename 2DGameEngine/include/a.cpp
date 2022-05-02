@@ -6,20 +6,14 @@
 *************************************************************************/
 #include "a.h"
 #include "TextureManager.h"
-#include "GameObject.h"
 #include "Map.h"
-
-#include "ECS.h"
-#include "Components.h"
+#include "ECS/Components.h"
 
 SDL_Renderer* a::Render = nullptr;
 
 Manager mannager;
-auto& newPlayer(mannager.addEntity());
+auto& player(mannager.addEntity());
 
-//GameObject player*
-GameObject* player;
-GameObject* enemy;
 Map* map;
 
 void a::init(const char* title, int xpos, int ypos, int weight, int heigh, bool fullscream)
@@ -54,14 +48,11 @@ void a::init(const char* title, int xpos, int ypos, int weight, int heigh, bool 
         std::cerr << "System Initoned Failed!\n";
     }
 
-    /* playerTex = TextureManager::LoadTexture("../assets/mario.png", Render); */
-    player = new GameObject("../assets/mario.png", 0, 0);
-
-    enemy = new GameObject("../assets/spider.png", 50, 100);
-
     map = new Map();
 
-    newPlayer.addComponent<PositionComponent>();
+    //ecs implementation
+    player.addComponent<PositionComponent>();
+    player.addComponent<SpriteComponent>("../assets/mario.png");
 }
 
 bool a::running()
@@ -105,20 +96,19 @@ void a::render()
 {
     SDL_RenderClear(Render);
     map->DrawMap();
-    player->Render();
-    enemy->Render();
+    mannager.draw();
     SDL_RenderPresent(Render);
 }
 
 void a::update()
 {
-    player->Update();
-    enemy->Update();
-
+    mannager.refresh();
     mannager.updat();
-    std::cout << newPlayer.getComponent<PositionComponent>().x() <<
-        ", " << newPlayer.getComponent<PositionComponent>().y() <<
-        std::endl;
+
+    if(player.getComponent<PositionComponent>().x() > 100)
+    {
+        player.getComponent<SpriteComponent>().setTex("../asset/spider.png");
+    }
 }
 
 void a::clean()

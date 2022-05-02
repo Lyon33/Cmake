@@ -59,10 +59,12 @@ public:
     void update()
     {
         for(auto& c : components) c->update();
-        for(auto& c : components) c->draw();
     }
     
-    void draw() {}
+    void draw() 
+    {
+        for(auto& c : components) c->draw();
+    }
 
     bool isActive()const { return active; }
 
@@ -76,9 +78,9 @@ public:
         return componentBitSet[getComponentTypeID<T>];
     }
 
-    //🍺
+    //🍺不知道这个模版是什么意思
     template <typename T, typename... TArgs>
-    T& addComponent(TArgs&&... mArgs)
+    T& addComponent(TArgs&&... mArgs)   //看不懂
     {
         T* c(new T(std::forward<TArgs>(mArgs)...));
         c->entity = this;
@@ -118,12 +120,15 @@ public:
 
     void refresh()
     {
+        //.erase()里面参数看不懂。。。remove_if()里面有3个参数
         entities.erase(std::remove_if(std::begin(entities), std::end(entities),
                                       [](const std::unique_ptr<Entity> &mEntity)
                                       {
                                       return !mEntity->isActive();
-                                      }), 
-                       std::end(entities));
+                                      }
+                                     ), 
+                       std::end(entities)
+                      );
     }
 
     Entity& addEntity()

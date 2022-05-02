@@ -1,11 +1,11 @@
 /*************************************************************************
-* File Name: Components.h
+* File Name: PositionComponent.h
 * Author: Lyon
 * Mail: 786208769@qq.com
-* Created Time: 一  5/ 2 19:02:22 2022
+* Created Time: 一  5/ 2 22:21:48 2022
 *************************************************************************/
 #pragma once
-#include "ECS.h"
+#include "Components.h"
 
 class PositionComponent : public Component
 {
@@ -14,26 +14,35 @@ private:
     int ypos;
 
 public:
-    int x() { return xpos; }
-    int y() { return ypos; }
 
-    void init() override
+    PositionComponent()
     {
         xpos = 0;
         ypos = 0;
     }
 
-    void update() override
+    PositionComponent(int x, int y)
+    {
+        xpos = x; 
+        ypos = y;
+    }
+
+    void update()
     {
         xpos++;
         ypos++;
     }
 
-    void setPos(int x, int y)
+    int x() { return xpos; }
+    int y() { return ypos; }
+
+    void x(int x) { xpos = x; }
+    void y(int y) { ypos = y; }
+
+    void SetPos(int x, int y)
     {
         xpos = x;
         ypos = y;
     }
-
 };
 
