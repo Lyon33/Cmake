@@ -9,7 +9,13 @@
 #include "GameObject.h"
 #include "Map.h"
 
+#include "ECS.h"
+#include "Components.h"
+
 SDL_Renderer* a::Render = nullptr;
+
+Manager mannager;
+auto& newPlayer(mannager.addEntity());
 
 //GameObject player*
 GameObject* player;
@@ -54,6 +60,8 @@ void a::init(const char* title, int xpos, int ypos, int weight, int heigh, bool 
     enemy = new GameObject("../assets/spider.png", 50, 100);
 
     map = new Map();
+
+    newPlayer.addComponent<PositionComponent>();
 }
 
 bool a::running()
@@ -106,6 +114,11 @@ void a::update()
 {
     player->Update();
     enemy->Update();
+
+    mannager.updat();
+    std::cout << newPlayer.getComponent<PositionComponent>().x() <<
+        ", " << newPlayer.getComponent<PositionComponent>().y() <<
+        std::endl;
 }
 
 void a::clean()
