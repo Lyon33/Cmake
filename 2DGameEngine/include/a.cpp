@@ -9,6 +9,8 @@
 #include "Map.h"
 #include "ECS/Components.h"
 
+SDL_Event a::event;
+
 SDL_Renderer* a::Render = nullptr;
 
 Manager mannager;
@@ -53,17 +55,18 @@ void a::init(const char* title, int xpos, int ypos, int weight, int heigh, bool 
     //ecs implementation
     player.addComponent<TransformComponent>();
     player.addComponent<SpriteComponent>("../assets/mario.png");
+
+    //键盘输入控制
+    player.addComponent<KeyboardController>();
 }
 
 bool a::running()
 {
-    /* std::cout << "The game is runnig...\n"; */
     return isRunning;
 }
 
 void a::handleEvent()
 {
-   SDL_Event event;
    SDL_PollEvent(&event);
    switch(event.type){
         case SDL_QUIT:
@@ -87,13 +90,6 @@ void a::update()
 {
     mannager.refresh();
     mannager.updat();
-
-    //改变位置（x y轴）(也是 x y上的速度)
-    player.getComponent<TransformComponent>().position.Add(Vector2D(1,2));
-    if(player.getComponent<TransformComponent>().position.x > 100)
-    {
-        player.getComponent<SpriteComponent>().setTex("../assets/enemy.png");
-    }
 }
 
 void a::clean()

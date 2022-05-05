@@ -10,17 +10,15 @@
 
 class TransformComponent : public Component
 {
-/* private: */
-/*     int xpos; */
-/*     int ypos; */
-
 public:
-    Vector2D position;
+    Vector2D position;  
+
+    Vector2D velocity;
+
+    int speed = 3;
 
     TransformComponent()
     {
-        /* xpos = 0; */
-        /* ypos = 0; */
         position.x = 0.0f;
         position.y = 0.0f;
     }
@@ -31,22 +29,16 @@ public:
         position.y = y;
     }
 
-    /* void update() override */
-    /* { */
-    /*     /1* xpos++; *1/ */
-    /*     /1* ypos++; *1/ */
-    /* } */
+    void init() override
+    {
+        velocity.x = 0;
+        velocity.y = 0;
+    }
 
-    /* int x() { return xpos; } */
-    /* int y() { return ypos; } */
-
-    /* void x(int x) { xpos = x; } */
-    /* void y(int y) { ypos = y; } */
-
-    /* void SetPos(int x, int y) */
-    /* { */
-    /*     xpos = x; */
-    /*     ypos = y; */
-    /* } */
+    void update() override
+    {
+        position.x += velocity.x * speed;
+        position.y += velocity.y * speed;
+    }
 };
 
