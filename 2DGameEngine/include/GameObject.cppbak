@@ -17,24 +17,24 @@ GameObject::GameObject(const char* texturesheet, int x, int y)
 
 void GameObject::Update()
 {
-    /* xpos++; */
+    xpos++;
     ypos++;
     
-    srcR.h = 15;
-    srcR.w = 15;
+    srcR.h = 32;
+    srcR.w = 32;
     srcR.x = 0;
     srcR.y = 0;
 
     desR.x = xpos;
     desR.y = ypos;
-    desR.w = srcR.w * 2;
-    desR.h = srcR.h * 2 + 2;
+    desR.w = 64;
+    desR.h = 64;
 
 }
 
 void GameObject::Render()
 {
-    SDL_RenderCopy(a::Render, objTexture, NULL, &desR);
+    SDL_RenderCopy(a::Render, objTexture, &srcR, &desR);
     /* SDL_RenderCopy(a::Render, objTexture, &srcR, &desR); */
     //不知道为什么，跟着视频，第三个参数写 &srcR时，不能正确显示图片
 }

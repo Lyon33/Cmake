@@ -6,7 +6,6 @@
 *************************************************************************/
 #pragma once
 #include "Components.h"
-#include "SDL.h"
 #include "TextureManager.h"
 
 class SpriteComponent : public Component
@@ -26,26 +25,27 @@ public:
 
     void init() override
     {
-        position = &entity->getComponent<PositionComponent>();
+        transform = &entity->getComponent<TransformComponent>();
 
-        srcR.x = srcR.y = 0;
-        srcR.w = srcR.h = 32;
+        //这里跟视频不同，选的不是32*32的照片，选的是马里奥的照片.
+        /* srcR.x = srcR.y = 0; */
+        /* srcR.w = srcR.h = 32; */
         destR.w = destR.h = 64;
     }
 
     void update() override
     {
-        destR.x = position->x();
-        destR.y = position->y();
+        destR.x = (int)transform->position.x;
+        destR.y = (int)transform->position.y;
     }
 
     void draw() override
     {
-        TextureManager::Drwa(texture, srcR, destR);
+        TextureManager::Draw(texture, srcR, destR);
     }
 
 private:
-    PositionComponent* position;
+    TransformComponent* transform;
 
     SDL_Texture* texture;
 

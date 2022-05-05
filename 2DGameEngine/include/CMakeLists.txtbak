@@ -1,3 +1,4 @@
+#这个子目录下的CMakeLists.txt 暂时废弃不用.
 aux_source_directory(. DIR_LIB_SRCS)
 
 set(SDL_DIR /opt/homebrew/Cellar/sdl2/2.0.20)

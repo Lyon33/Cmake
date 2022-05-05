@@ -8,6 +8,8 @@
 #pragma once
 #include "a.h"
 
+//这里因为有了ecs系统结构，所以编译不再需要GameObject，暂时弃用(5月4号)
+
 class GameObject
 {
 public:
@@ -15,7 +17,6 @@ public:
     ~GameObject();
 
     //封装函数
-
     void Update();
     void Render();
 

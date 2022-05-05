@@ -4,9 +4,11 @@ project(sdl2_game)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_subdirectory(include)
+# add_subdirectory(include)
 
 aux_source_directory(src DIR_SRCS)
+
+aux_source_directory(include INC_SRCS)
 
 #调试 Debug or Release
 set(CMAKE_BUILD_TYPE "Debug")
@@ -36,10 +38,10 @@ include_directories(
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
 # add_executable(${PROJECT_NAME} ${DIR_SRCS} {PROJECT_SOURCE_DIR}/include/a.h ${PROJECT_SOURCE_DIR}/include/a.cpp)
-add_executable(${PROJECT_NAME} ${DIR_SRCS})
+add_executable(${PROJECT_NAME} ${DIR_SRCS} ${INC_SRCS})
 
 target_link_libraries(${PROJECT_NAME}  
     ${SDL2_LIBRARIES} 
-    Mygamelib
+    # Mygamelib
     )
 

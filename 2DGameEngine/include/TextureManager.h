@@ -14,7 +14,7 @@ public:
     //注意这里加了static静态修饰
     static SDL_Texture* LoadTexture(const char* fileName);
 
-    static void Drwa(SDL_Texture* tex, SDL_Rect src, SDL_Rect dest);
+    static void Draw(SDL_Texture* tex, SDL_Rect src, SDL_Rect dest);
 
 private:
 

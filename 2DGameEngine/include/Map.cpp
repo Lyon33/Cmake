@@ -77,13 +77,13 @@ void Map::DrawMap()
            switch(type)
            {
            case 0:
-               TextureManager::Drwa(water, src, dest);
+               TextureManager::Draw(water, src, dest);
                break;
            case 1:
-               TextureManager::Drwa(grass, src, dest);
+               TextureManager::Draw(grass, src, dest);
                break;
            case 2:
-               TextureManager::Drwa(dirt, src, dest);
+               TextureManager::Draw(dirt, src, dest);
                break;
 
            default:

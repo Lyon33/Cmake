@@ -51,7 +51,7 @@ void a::init(const char* title, int xpos, int ypos, int weight, int heigh, bool 
     map = new Map();
 
     //ecs implementation
-    player.addComponent<PositionComponent>();
+    player.addComponent<TransformComponent>();
     player.addComponent<SpriteComponent>("../assets/mario.png");
 }
 
@@ -75,23 +75,6 @@ void a::handleEvent()
    }
 }
 
-#if 0
-void a::handleEvent()
-{
-    SDL_Event event;
-    if(SDL_PollEvent(&event))
-    {
-        if(SDL_QUIT == event.type)
-        {
-            isRunning = false;
-        }
-    }
-    else{
-        std::cerr << "handle event Failed!\n";
-    }
-}
-#endif
-
 void a::render()
 {
     SDL_RenderClear(Render);
@@ -105,9 +88,11 @@ void a::update()
     mannager.refresh();
     mannager.updat();
 
-    if(player.getComponent<PositionComponent>().x() > 100)
+    //改变位置（x y轴）(也是 x y上的速度)
+    player.getComponent<TransformComponent>().position.Add(Vector2D(1,2));
+    if(player.getComponent<TransformComponent>().position.x > 100)
     {
-        player.getComponent<SpriteComponent>().setTex("../asset/spider.png");
+        player.getComponent<SpriteComponent>().setTex("../assets/enemy.png");
     }
 }
 
